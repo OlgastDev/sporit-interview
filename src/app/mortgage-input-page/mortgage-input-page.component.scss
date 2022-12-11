@@ -1,0 +1,12 @@
+.mortgage-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-width: 600px;
+
+  h2 {
+    text-align: center;
+  }
+}
