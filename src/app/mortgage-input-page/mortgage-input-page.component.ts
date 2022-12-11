@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'si-mortgage-input-page',
@@ -18,9 +19,10 @@ export class MortgageInputPageComponent {
     repayment: '',
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   onSubmit(): void {
     console.log('Mortgage:', this.mortgageForm.value);
+    this.router.navigate(['/calculation']);
   }
 }
