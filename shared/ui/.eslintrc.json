@@ -9,7 +9,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "sporitInterview",
+            "prefix": "si",
             "style": "camelCase"
           }
         ],
@@ -17,7 +17,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "sporit-interview",
+            "prefix": "si",
             "style": "kebab-case"
           }
         ]
