@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
-import { MortgageInputPageComponent } from './mortgage-input-page/mortgage-input-page.component';
-import { MortgageCalculationPageComponent } from './mortgage-calculation-page/mortgage-calculation-page.component';
-import { AppRoutingModule } from './app-routing.module';
+import { MortgageInputPageComponent } from './pages/mortgage-input-page/mortgage-input-page.component';
+import { MortgageCalculationPageComponent } from './pages/mortgage-calculation-page/mortgage-calculation-page.component';
+import { AppRouterModule } from './router/router.module';
+import { AppStoreModule } from './store/store.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,13 @@ import { AppRoutingModule } from './app-routing.module';
     MortgageInputPageComponent,
     MortgageCalculationPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRouterModule,
+    AppStoreModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MortgageInputPageComponent } from './mortgage-input-page/mortgage-input-page.component';
-import { MortgageCalculationPageComponent } from './mortgage-calculation-page/mortgage-calculation-page.component';
+import { MortgageInputPageComponent } from '../pages/mortgage-input-page/mortgage-input-page.component';
+import { MortgageCalculationPageComponent } from '../pages/mortgage-calculation-page/mortgage-calculation-page.component';
 
 const routes: Routes = [
   {
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRouterModule {}
