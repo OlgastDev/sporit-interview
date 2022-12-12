@@ -2,22 +2,33 @@
   <h2>Requested Mortgage</h2>
 
   <div>
-    <label for="amount"> Mortgage value </label>
+    <label for="amount">
+      Mortgage value [{{ mortgageInputData?.amount?.min }} -
+      {{ mortgageInputData?.amount?.max }}]
+    </label>
     <input id="amount" type="text" formControlName="amount" />
   </div>
 
   <div>
-    <label for="years"> Mortgage duration </label>
+    <label for="years">
+      Mortgage duration [{{ mortgageInputData?.years?.min }} -
+      {{ mortgageInputData?.years?.max }}]</label
+    >
     <input id="years" type="text" formControlName="years" />
   </div>
 
   <div>
-    <label for="fixation"> Fixation period </label>
+    <label for="fixation">
+      Fixation period [{{ mortgageInputData?.fixation?.values }}]</label
+    >
     <input id="fixation" type="text" formControlName="fixation" />
   </div>
 
   <div>
-    <label for="loanPercentage"> Loan percentage </label>
+    <label for="loanPercentage">
+      Loan percentage [{{ mortgageInputData?.loanPercentage?.min }} -
+      {{ mortgageInputData?.loanPercentage?.max }}]</label
+    >
     <input id="loanPercentage" type="text" formControlName="loanPercentage" />
   </div>
 
