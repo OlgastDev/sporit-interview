@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { calculationReducer } from './calculation.reducer';
 import { mortgageRangesReducer } from './mortgage-ranges.reducer';
+import { hydrationMetaReducer } from './hydration.reducer';
 import { userInputReducer } from './user-input.reducer';
 
 const state = {
@@ -10,9 +11,11 @@ const state = {
   userInput: userInputReducer,
   mortgageRanges: mortgageRangesReducer,
 };
+
+const metaReducers: MetaReducer[] = [hydrationMetaReducer];
 @NgModule({
   imports: [
-    StoreModule.forRoot(state),
+    StoreModule.forRoot(state, { metaReducers }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: true, // Restrict extension to log-only mode
