@@ -9,6 +9,8 @@ import { MortgageInputPageComponent } from './pages/mortgage-input-page/mortgage
 import { MortgageCalculationPageComponent } from './pages/mortgage-calculation-page/mortgage-calculation-page.component';
 import { AppRouterModule } from './router/router.module';
 import { AppStoreModule } from './store/store.module';
+import { MortgageInputFormComponent } from './components/mortgage-input-form/mortgage-input-form.component';
+import { MortgageCalculationComponent } from './components/mortgage-calculation/mortgage-calculation.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { AppStoreModule } from './store/store.module';
     NxWelcomeComponent,
     MortgageInputPageComponent,
     MortgageCalculationPageComponent,
+    MortgageInputFormComponent,
+    MortgageCalculationComponent,
   ],
   imports: [
     BrowserModule,

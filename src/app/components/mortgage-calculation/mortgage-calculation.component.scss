@@ -1,0 +1,13 @@
+.calculation-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-width: 600px;
+
+  h2,
+  h3 {
+    text-align: center;
+  }
+}

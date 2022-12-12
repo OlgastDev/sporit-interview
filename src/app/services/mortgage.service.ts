@@ -1,28 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-
-export interface MortgageInputData {
-  loanType: string;
-  name: string;
-  amount: {
-    min: number;
-    max: number;
-  };
-  years: {
-    min: number;
-    max: number;
-  };
-  fixation: {
-    values: number[];
-    defaultValue: number;
-  };
-  loanPercentage: {
-    min: number;
-    max: number;
-    defaultValue: number;
-  };
-}
+import { MortgageCalculation } from '../store/calculation.reducer';
+import { MortgageInputRanges } from '../store/mortgage-ranges.reducer';
 
 export interface MortgageCalculationRequestBody {
   loanType: string;
@@ -30,17 +10,6 @@ export interface MortgageCalculationRequestBody {
   years: number;
   loanPercentage: number;
   fixation: number;
-}
-
-export interface MortgageCalculationResponse {
-  loanType: string;
-  amount: number;
-  productType: string;
-  interestRate: number;
-  loanPercentage: number;
-  years: number;
-  fixation: number;
-  repayment: number;
 }
 
 @Injectable({
@@ -61,15 +30,15 @@ export class MortgageService {
     };
   }
 
-  getMortgageInputData(): Observable<MortgageInputData | undefined> {
+  getMortgageInputData(): Observable<MortgageInputRanges | undefined> {
     return this.http
-      .get<{ loans: MortgageInputData[] }>(this.mortgageApiUrl)
+      .get<{ loans: MortgageInputRanges[] }>(this.mortgageApiUrl)
       .pipe(
         map((res) => res.loans.find((loan) => loan.loanType === 'Mortgage')),
         catchError(
-          this.handleError<MortgageInputData>(
+          this.handleError<MortgageInputRanges>(
             'getMortgageInputData',
-            {} as MortgageInputData
+            {} as MortgageInputRanges
           )
         )
       );
@@ -77,14 +46,14 @@ export class MortgageService {
 
   getMortgageCalculation(
     mortgageInputs: MortgageCalculationRequestBody
-  ): Observable<MortgageCalculationResponse | undefined> {
+  ): Observable<MortgageCalculation | undefined> {
     return this.http
-      .post<MortgageCalculationResponse>(this.mortgageApiUrl, mortgageInputs)
+      .post<MortgageCalculation>(this.mortgageApiUrl, mortgageInputs)
       .pipe(
         catchError(
-          this.handleError<MortgageCalculationResponse>(
+          this.handleError<MortgageCalculation>(
             'getMortgageInputData',
-            {} as MortgageCalculationResponse
+            {} as MortgageCalculation
           )
         )
       );
