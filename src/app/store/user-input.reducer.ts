@@ -20,7 +20,12 @@ export interface UserInputState {
 
 export const initialState: UserInputState = {
   userInputs: null,
-  generatedMortgage: null,
+  generatedMortgage: {
+    amount: 7000000,
+    loanPercentage: 70,
+    years: 25,
+    fixation: 5,
+  },
 };
 
 export const userInputReducer = createReducer(

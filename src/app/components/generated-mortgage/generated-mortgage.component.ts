@@ -23,19 +23,16 @@ export class GeneratedMortgageComponent implements OnInit {
   ngOnInit(): void {
     if (!this.generatedMortgage && this.ranges) {
       const generate = {
-        amount: getRandomInt(
-          this.ranges?.amount?.min,
-          this.ranges?.amount?.max
-        ),
+        amount: getRandomInt(this.ranges.amount.min, this.ranges.amount.max),
         loanPercentage: getRandomInt(
-          this.ranges?.loanPercentage?.min,
-          this.ranges?.loanPercentage?.max
+          this.ranges.loanPercentage.min,
+          this.ranges.loanPercentage.max
         ),
         fixation:
-          this.ranges?.fixation?.values[
-            getRandomInt(1, this.ranges?.fixation?.values.length) - 1
+          this.ranges.fixation.values[
+            getRandomInt(1, this.ranges.fixation.values.length) - 1
           ],
-        years: getRandomInt(this.ranges?.years?.min, this.ranges?.years?.max),
+        years: getRandomInt(this.ranges.years.min, this.ranges.years.max),
       };
       this.store.dispatch(
         storeGeneratedMortgage({ generatedMortgage: generate })

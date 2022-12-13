@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { UserTip } from '../../store/user-input.reducer';
 import { MortgageCalculation } from '../../store/calculation.reducer';
 
 @Component({
@@ -8,4 +9,5 @@ import { MortgageCalculation } from '../../store/calculation.reducer';
 })
 export class MortgageCalculationComponent {
   @Input() calculation: MortgageCalculation | null = null;
+  @Input() userTip: UserTip | null = null;
 }

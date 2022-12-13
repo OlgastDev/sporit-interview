@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/selectors';
@@ -10,22 +17,17 @@ import { UserTip } from '../../store/user-input.reducer';
   templateUrl: './mortgage-input-form.component.html',
   styleUrls: ['./mortgage-input-form.component.scss'],
 })
-export class MortgageInputFormComponent {
+export class MortgageInputFormComponent implements OnChanges {
   @Input() userInputs: UserTip | null = null;
   @Output() submitForm = new EventEmitter<void>();
 
   mortgageForm = this.formBuilder.group({
-    interestRate: [
-      this.userInputs?.interestRate || null,
-      { validators: [Validators.required] },
-    ],
-    repayment: [
-      this.userInputs?.repayment || null,
-      { validators: [Validators.required] },
-    ],
+    interestRate: [null, { validators: [Validators.required] }],
+    repayment: [null, { validators: [Validators.required] }],
   });
 
   event$ = this.mortgageForm.valueChanges.subscribe((formData: any) => {
+    console.log(formData);
     this.store.dispatch(updateUserInput({ userInputs: formData }));
   });
 
@@ -33,6 +35,13 @@ export class MortgageInputFormComponent {
     private formBuilder: FormBuilder,
     private store: Store<AppState>
   ) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.mortgageForm.patchValue({
+      interestRate: changes['userInputs'].currentValue.interestRate,
+      repayment: changes['userInputs'].currentValue.repayment,
+    });
+  }
 
   handleSubmit(): void {
     if (this.mortgageForm.valid) {
