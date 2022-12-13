@@ -1,5 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { retrievedMortgageRanges } from './mortgage-ranges.actions';
+import {
+  retrieveMortgageRanges,
+  retrieveMortgageRangesError,
+  retrieveMortgageRangesSuccess,
+} from './mortgage-ranges.actions';
 
 export interface MortgageInputRanges {
   loanType: string;
@@ -37,8 +41,18 @@ export const initialState: MortgageRangesState = {
 
 export const mortgageRangesReducer = createReducer(
   initialState,
-  on(retrievedMortgageRanges, (_state, { mortgageRanges }) => ({
+  on(retrieveMortgageRanges, (_state) => ({
+    ..._state,
+    isLoading: true,
+  })),
+  on(retrieveMortgageRangesSuccess, (_state, { mortgageRanges }) => ({
     ..._state,
     ranges: mortgageRanges,
+    isLoading: false,
+  })),
+  on(retrieveMortgageRangesError, (_state, { error }) => ({
+    ..._state,
+    error: error,
+    isLoading: false,
   }))
 );

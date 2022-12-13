@@ -11,6 +11,8 @@ import { AppRouterModule } from './router/router.module';
 import { AppStoreModule } from './store/store.module';
 import { MortgageInputFormComponent } from './components/mortgage-input-form/mortgage-input-form.component';
 import { MortgageCalculationComponent } from './components/mortgage-calculation/mortgage-calculation.component';
+import { GeneratedMortgageComponent } from './components/generated-mortgage/generated-mortgage.component';
+import { MortgageInputContainerComponent } from './components/mortgage-input-container/mortgage-input-container.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { MortgageCalculationComponent } from './components/mortgage-calculation/
     MortgageCalculationPageComponent,
     MortgageInputFormComponent,
     MortgageCalculationComponent,
+    GeneratedMortgageComponent,
+    MortgageInputContainerComponent,
   ],
   imports: [
     BrowserModule,

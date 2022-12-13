@@ -1,50 +1,14 @@
-<form
-  class="mortgage-form"
-  [formGroup]="mortgageForm"
-  (ngSubmit)="handleSubmit()"
->
-  <h2>Requested Mortgage</h2>
-
-  <div>
-    <label for="amount">
-      Mortgage value [{{ ranges?.amount?.min }} - {{ ranges?.amount?.max }}]
-    </label>
-    <input id="amount" type="text" formControlName="amount" />
-  </div>
-
-  <div>
-    <label for="years">
-      Mortgage duration [{{ ranges?.years?.min }} -
-      {{ ranges?.years?.max }}]</label
-    >
-    <input id="years" type="text" formControlName="years" />
-  </div>
-
-  <div>
-    <label for="fixation">
-      Fixation period [{{ ranges?.fixation?.values }}]</label
-    >
-    <input id="fixation" type="text" formControlName="fixation" />
-  </div>
-
-  <div>
-    <label for="loanPercentage">
-      Loan percentage [{{ ranges?.loanPercentage?.min }} -
-      {{ ranges?.loanPercentage?.max }}]</label
-    >
-    <input id="loanPercentage" type="text" formControlName="loanPercentage" />
-  </div>
-
+<form class="container" [formGroup]="mortgageForm" (ngSubmit)="handleSubmit()">
   <h2>Make a tip for interest rate and repayment value</h2>
   <div>
     <label for="interestRate"> Interest rate tip </label>
-    <input id="interestRate" type="text" formControlName="interestRate" />
+    <input id="interestRate" type="number" formControlName="interestRate" />
   </div>
 
   <div>
     <label for="repayment"> Repayment tip </label>
-    <input id="repayment" type="text" formControlName="repayment" />
+    <input id="repayment" type="number" formControlName="repayment" />
   </div>
 
-  <button type="submit">Calculate</button>
+  <button type="submit" [disabled]="!mortgageForm.valid">Calculate</button>
 </form>

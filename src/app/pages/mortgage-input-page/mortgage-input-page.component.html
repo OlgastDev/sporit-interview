@@ -1,3 +1,6 @@
-<si-mortgage-input-form
+<si-mortgage-input-container
   [ranges]="mortgageInputRanges$ | async"
-></si-mortgage-input-form>
+  [userInputs]="userInputs$ | async"
+  [generatedMortgage]="generatedMortgage$ | async"
+>
+</si-mortgage-input-container>
